@@ -30,8 +30,7 @@ public class Entry {
             mehrereKlassen = true;
             Length++;
         }
-        if (data.contains("/"))
-        {
+        if (data.contains("/")) {
             verlegungsdatumVorhanden = true;
             Length++;
         }
