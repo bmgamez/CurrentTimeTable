@@ -9,13 +9,12 @@ public class Main {
 
     public static void main(String[] args) {
 
-        String klasse = "10c";
-
         String string = null;
         String string1 = "";
+
         try {
 
-            File file = new File(Downloader.downloadPlan("mi"));
+            File file = new File(Downloader.downloadPlan(Getter.get("day")));
 
             PDDocument pdDocument = PDDocument.load(file);
             PDFTextStripper pdfTextStripper = new PDFTextStripper();
@@ -23,8 +22,8 @@ public class Main {
             string = pdfTextStripper.getText(pdDocument);
             String[] lines = string.split("\r\n|\r|\n");
 
-            for (String line:lines) {
-                if (line.contains(klasse)) {
+            for (String line : lines) {
+                if (line.contains(Getter.get("class"))) {
                     string1 = string1 + line + "\n";
                 }
             }
