@@ -45,7 +45,7 @@ public class Entry {
         }
         currentEntry.stunde = splitData[currentIndex];
         currentIndex++;
-        if (splitData[currentIndex] == "-") {
+        if (splitData[currentIndex].equals("-")) {
             tempStunde = currentEntry.stunde;
             currentIndex++;
             currentEntry.stunde = tempStunde + "-" + splitData[currentIndex];
