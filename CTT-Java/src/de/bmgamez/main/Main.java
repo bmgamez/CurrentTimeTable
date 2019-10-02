@@ -24,8 +24,7 @@ public class Main {
 
             for (String line : lines) {
                 if (line.contains(Getter.get("class"))) {
-                    Entry entry = new Entry();
-                    entry.CreateEntry(line);
+                    Entry entry = Entry.CreateEntry(line);
                     System.out.println(entry.stunde);
                     string1 = string1 + line + "\n";
                 }
