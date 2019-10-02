@@ -5,17 +5,6 @@ import org.apache.pdfbox.text.PDFTextStripper;
 
 import java.io.File;
 
-class Entry {
-    int type;
-    String[] klassen;
-    String stunde;
-    String fach;
-    String neuesFach;
-    String raum;
-    String neuerRaum;
-    String text;
-}
-
 public class Main {
 
     public static void main(String[] args) {
@@ -45,11 +34,5 @@ public class Main {
         }
 
         System.out.println(string1);
-    }
-    public static Entry CreateEntry(String data) {
-        if (String.contains(","))
-        {
-
-        }
     }
 }
