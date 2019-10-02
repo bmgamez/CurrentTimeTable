@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="de.bmgamez.ui.Controller"
+            prefHeight="626.0" prefWidth="626.0">
+    <children>
+        <TableView layoutX="44.0" layoutY="94.0" prefHeight="518.0" prefWidth="232.0">
+            <columns>
+                <TableColumn prefWidth="231.0" text="Heute"/>
+            </columns>
+        </TableView>
+        <TableView layoutX="357.0" layoutY="94.0" prefHeight="518.0" prefWidth="232.0">
+            <columns>
+                <TableColumn prefWidth="231.0" text="Morgen"/>
+            </columns>
+        </TableView>
+        <Label layoutX="160.0" layoutY="14.0" text="Stundenpläne">
+            <font>
+                <Font name="Comic Sans MS" size="50.0"/>
+            </font>
+        </Label>
+        <Button layoutX="26.0" layoutY="24.0" mnemonicParsing="false" text="Einstellungen">
+            <font>
+                <Font name="Ebrima" size="15.0"/>
+            </font>
+        </Button>
+        <Button layoutX="506.0" layoutY="24.0" mnemonicParsing="false" text="Schließen">
+            <font>
+                <Font name="Ebrima" size="15.0"/>
+            </font>
+        </Button>
+    </children>
+</AnchorPane>
