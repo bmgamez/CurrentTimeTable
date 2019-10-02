@@ -9,13 +9,13 @@ public class Main {
 
     public static void main(String[] args) {
 
-        String klasse = "10d";
+        String klasse = "10c";
 
         String string = null;
         String string1 = "";
         try {
 
-            File file = new File("resources/plan.pdf");
+            File file = new File(Downloader.downloadPlan("mi"));
 
             PDDocument pdDocument = PDDocument.load(file);
             PDFTextStripper pdfTextStripper = new PDFTextStripper();
