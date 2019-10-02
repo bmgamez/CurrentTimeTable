@@ -11,17 +11,15 @@ public class Entry {
     String text;
 
 
-    public static Entry CreateEntry(String data) {
+    public static void CreateEntry(String data) {
         Entry currentEntry = new Entry();
         boolean mehrereKlassen = false;
         boolean verlegungsdatumVorhanden = false;
-        boolean
-        if (data.contains(","))
-        {
+        //boolean
+        if (data.contains(",")) {
             mehrereKlassen = true;
         }
-        if (data.contains("/"))
-        {
+        if (data.contains("/")) {
             verlegungsdatumVorhanden = true;
         }
     }
