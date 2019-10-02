@@ -2,18 +2,18 @@ package de.bmgamez.main;
 
 public class Entry {
     // Wenn keine 2. klasse vorhanden dann klassen[1] = null
-    String[] klassen = new String[1];
-    String stunde;
-    String fach;
+    public String[] klassen = new String[2];
+    public String stunde;
+    public String fach;
     // Wenn kein anderes Fach dann ist neuesFach = null
-    String neuesFach;
-    String raum;
+    public String neuesFach;
+    public String raum;
     // Wenn kein neuer Raum dann ist neuerRaum = null
-    String neuerRaum;
+    public String neuerRaum;
     // Wenn kein verlegungsdatum vorhanden dann verlegungsdaten = null
-    String verlegungsdaten;
+    public String verlegungsdaten;
     // Wenn kein Text vorhanden dann = null
-    String text;
+    public String text;
 
 
     public static Entry CreateEntry(String data) {
@@ -25,8 +25,7 @@ public class Entry {
         boolean mehrereKlassen = false;
         boolean verlegungsdatumVorhanden = false;
         boolean textVorhanden = false;
-        if (data.contains(","))
-        {
+        if (data.contains(",")) {
             mehrereKlassen = true;
             Length++;
         }
@@ -34,57 +33,46 @@ public class Entry {
             verlegungsdatumVorhanden = true;
             Length++;
         }
-        if (splitData.length > Length)
-        {
+        if (splitData.length > Length) {
             textVorhanden = true;
             Length++;
         }
         currentEntry.klassen[0] = splitData[currentIndex];
         currentIndex++;
-        if (mehrereKlassen)
-        {
+        if (mehrereKlassen) {
             currentEntry.klassen[1] = splitData[currentIndex];
             currentIndex++;
         }
         currentEntry.stunde = splitData[currentIndex];
         currentIndex++;
-        if (splitData[currentIndex] == "-")
-        {
+        if (splitData[currentIndex] == "-") {
             tempStunde = currentEntry.stunde;
             currentIndex++;
             currentEntry.stunde = tempStunde + "-" + splitData[currentIndex];
         }
-        if (splitData[currentIndex].contains("→"))
-        {
+        if (splitData[currentIndex].contains("→")) {
             String[] tempSplit = splitData[currentIndex].split("→");
             currentEntry.fach = tempSplit[0];
             currentEntry.neuesFach = tempSplit[1];
             currentIndex++;
-        }
-        else
-        {
+        } else {
             currentEntry.fach = splitData[currentIndex];
             currentIndex++;
         }
-        if (splitData[currentIndex].contains("→"))
-        {
+        if (splitData[currentIndex].contains("→")) {
             String[] tempSplit = splitData[currentIndex].split("→");
             currentEntry.raum = tempSplit[0];
             currentEntry.neuerRaum = tempSplit[1];
             currentIndex++;
-        }
-        else
-        {
+        } else {
             currentEntry.raum = splitData[currentIndex];
             currentIndex++;
         }
-        if (verlegungsdatumVorhanden)
-        {
+        if (verlegungsdatumVorhanden) {
             currentEntry.verlegungsdaten = splitData[currentIndex];
             currentIndex++;
         }
-        if (textVorhanden)
-        {
+        if (textVorhanden) {
             currentEntry.text = splitData[currentIndex];
             currentIndex++;
         }
