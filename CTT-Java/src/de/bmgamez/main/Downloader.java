@@ -8,10 +8,10 @@ public class Downloader {
 
     static String downloadPlan(String day) {
 
-        String path = "resources/tmp/plan.pdf";
+        String path = Getter.get("path");
 
         try {
-            URL url = new URL("http://schulinternes.de/dato40/hp-show.php?schule=68766cfg&tag=" + day);
+            URL url = new URL("http://schulinternes.de/dato40/hp-show.php?schule=" + Getter.get("school") + "&tag=" + day);
             InputStream in = url.openStream();
             FileOutputStream fos = new FileOutputStream(path);
 
@@ -26,7 +26,6 @@ public class Downloader {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
 
         return path;
     }
