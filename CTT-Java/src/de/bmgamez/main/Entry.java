@@ -35,7 +35,7 @@ public class Entry {
         }
         if (splitData.length > Length) {
             textVorhanden = true;
-            Length++;
+            //Length++;
         }
         currentEntry.klassen[0] = splitData[currentIndex];
         currentIndex++;
@@ -74,7 +74,7 @@ public class Entry {
         }
         if (textVorhanden) {
             currentEntry.text = splitData[currentIndex];
-            currentIndex++;
+            //currentIndex++;
         }
         return currentEntry;
     }
