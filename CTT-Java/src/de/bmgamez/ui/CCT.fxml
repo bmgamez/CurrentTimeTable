@@ -11,12 +11,14 @@
    <children>
       <TableView fx:id="tableView1" layoutX="44.0" layoutY="94.0" prefHeight="518.0" prefWidth="232.0">
         <columns>
-          <TableColumn id="heute" fx:id="tableColumn1" editable="false" prefWidth="231.0" sortable="false" text="Heute" />
+            <TableColumn fx:id="tableColumnHour1" prefWidth="49.0" text="Stunde" />
+          <TableColumn id="heute" fx:id="tableColumnContent1" editable="false" prefWidth="257.0" sortable="false" text="Heute" />
         </columns>
       </TableView>
-      <TableView layoutX="368.0" layoutY="94.0" prefHeight="518.0" prefWidth="232.0">
+      <TableView fx:id="tableView2" layoutX="368.0" layoutY="94.0" prefHeight="518.0" prefWidth="232.0">
          <columns>
-            <TableColumn id="morgen" editable="false" prefWidth="231.0" sortable="false" text="Morgen" />
+            <TableColumn fx:id="tableColumnHour2" prefWidth="49.0" text="Stunde" />
+            <TableColumn id="morgen" fx:id="tableColumnContent2" editable="false" prefWidth="231.0" sortable="false" text="Morgen" />
          </columns>
       </TableView>
       <Label layoutX="160.0" layoutY="14.0" text="Stundenpläne">
