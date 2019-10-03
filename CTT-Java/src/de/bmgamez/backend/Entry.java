@@ -21,9 +21,13 @@ public class Entry {
         Entry currentEntry = new Entry();
         int currentIndex = 0;
         int Length = 4;
+        boolean fälltAus = false;
         boolean mehrereKlassen = false;
         boolean verlegungsdatumVorhanden = false;
         boolean textVorhanden = false;
+        if (data.contains("---")) {
+            fälltAus = true;
+        }
         if (data.contains(",")) {
             mehrereKlassen = true;
             Length++;
@@ -48,14 +52,20 @@ public class Entry {
             String tempStunde = currentEntry.stunde;
             currentIndex++;
             currentEntry.stunde = tempStunde + "-" + splitData[currentIndex];
+            currentIndex++;
         }
         if (splitData[currentIndex].contains("→")) {
             String[] tempSplit = splitData[currentIndex].split("→");
             currentEntry.fach = tempSplit[0];
             currentEntry.neuesFach = tempSplit[1];
             currentIndex++;
+        } else if (fälltAus) {
+            currentEntry.fach = splitData[currentIndex];
+            currentEntry.neuesFach = "---";
+            currentIndex = currentIndex + 2;
         } else {
             currentEntry.fach = splitData[currentIndex];
+            currentEntry.neuesFach = splitData[currentIndex];
             currentIndex++;
         }
         if (splitData[currentIndex].contains("→")) {
@@ -85,7 +95,7 @@ public class Entry {
         System.out.println(currentEntry.neuerRaum);
         System.out.println(currentEntry.verlegungsdaten);
         System.out.println(currentEntry.text);
-
+        System.out.println("---------------------------");
         return currentEntry;
     }
 }

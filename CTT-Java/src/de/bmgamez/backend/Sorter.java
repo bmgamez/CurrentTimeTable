@@ -50,12 +50,8 @@ public class Sorter {
                     thing[4] = "";
 
                 }
-
             }
-
-
         }
-
 
         return thing;
     }
