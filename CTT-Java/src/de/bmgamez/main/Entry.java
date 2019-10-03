@@ -31,7 +31,7 @@ public class Entry {
         }
         if (data.contains("/")) {
             verlegungsdatumVorhanden = true;
-            Length++;
+            Length = Length + 3;
         }
         if (splitData.length > Length) {
             textVorhanden = true;
@@ -69,13 +69,24 @@ public class Entry {
             currentIndex++;
         }
         if (verlegungsdatumVorhanden) {
-            currentEntry.verlegungsdaten = splitData[currentIndex];
-            currentIndex++;
+            currentEntry.verlegungsdaten = splitData[currentIndex] + splitData[currentIndex+1] + splitData[currentIndex+2];
+            currentIndex = currentIndex + 3;
         }
         if (textVorhanden) {
             currentEntry.text = splitData[currentIndex];
             //currentIndex++;
         }
+        /*
+        System.out.println(currentEntry.klassen[0]);
+        System.out.println(currentEntry.klassen[1]);
+        System.out.println(currentEntry.stunde);
+        System.out.println(currentEntry.fach);
+        System.out.println(currentEntry.neuesFach);
+        System.out.println(currentEntry.raum);
+        System.out.println(currentEntry.neuerRaum);
+        System.out.println(currentEntry.verlegungsdaten);
+        System.out.println(currentEntry.text);
+        */
         return currentEntry;
     }
 }
