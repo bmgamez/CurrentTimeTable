@@ -31,7 +31,7 @@ public class Entry {
         }
         if (data.contains("/")) {
             verlegungsdatumVorhanden = true;
-            Length++;
+            Length = Length + 3;
         }
         if (splitData.length > Length) {
             textVorhanden = true;
@@ -69,8 +69,8 @@ public class Entry {
             currentIndex++;
         }
         if (verlegungsdatumVorhanden) {
-            currentEntry.verlegungsdaten = splitData[currentIndex];
-            currentIndex++;
+            currentEntry.verlegungsdaten = splitData[currentIndex] + splitData[currentIndex+1] + splitData[currentIndex+2];
+            currentIndex = currentIndex + 3;
         }
         if (textVorhanden) {
             currentEntry.text = splitData[currentIndex];
