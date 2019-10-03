@@ -19,7 +19,6 @@ public class Entry {
     public static Entry CreateEntry(String data) {
         String[] splitData = data.split(" ");
         Entry currentEntry = new Entry();
-        String tempStunde;
         int currentIndex = 0;
         int Length = 4;
         boolean mehrereKlassen = false;
@@ -46,7 +45,7 @@ public class Entry {
         currentEntry.stunde = splitData[currentIndex];
         currentIndex++;
         if (splitData[currentIndex].equals("-")) {
-            tempStunde = currentEntry.stunde;
+            String tempStunde = currentEntry.stunde;
             currentIndex++;
             currentEntry.stunde = tempStunde + "-" + splitData[currentIndex];
         }
