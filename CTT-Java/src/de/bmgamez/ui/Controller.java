@@ -1,5 +1,6 @@
 package de.bmgamez.ui;
 
+import de.bmgamez.backend.Reader;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -15,26 +16,27 @@ import java.util.ResourceBundle;
 public class Controller implements Initializable {
 
     @FXML
-    TableColumn<Class, String> tableColumnHour1;
+    TableColumn<Stunde, String> tableColumnHour1;
     @FXML
-    TableColumn<Class, String> tableColumnContent1;
+    TableColumn<Stunde, String> tableColumnContent1;
     @FXML
-    TableColumn<Class, String> tableColumnHour2;
+    TableColumn<Stunde, String> tableColumnHour2;
     @FXML
-    TableColumn<Class, String> TableColumnContent2;
+    TableColumn<Stunde, String> TableColumnContent2;
 
     @FXML
-    TableView<Class> tableView1;
+    TableView<Stunde> tableView1;
     @FXML
-    TableView<Class> tableView2;
+    TableView<Stunde> tableView2;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        tableColumnHour1.setCellValueFactory(new PropertyValueFactory<Class, String>("klasse"));
 
-        Task<List<Class>> task = new Task<List<Class>>() {
+        tableColumnHour1.setCellValueFactory(new PropertyValueFactory<Stunde, String>("stunde"));
+
+        Task<List<Stunde>> task = new Task<List<Stunde>>() {
             @Override
-            protected List<Class> call() throws Exception {
+            protected List<Stunde> call() throws Exception {
                 return setDay();
             }
 
@@ -46,27 +48,55 @@ public class Controller implements Initializable {
         };
 
         new Thread(task).start();
+
+        tableColumnContent1.setCellValueFactory(new PropertyValueFactory<Stunde, String>("stunde"));
+
+        Task<List<Stunde>> task1 = new Task<List<Stunde>>() {
+            @Override
+            protected List<Stunde> call() throws Exception {
+                return setHours("mi");
+            }
+
+            @Override
+            protected void succeeded() {
+                tableView1.getItems().clear();
+                tableView1.getItems().addAll(getValue());
+            }
+        };
+
+        new Thread(task1).start();
     }
 
-    private List<Class> setDay() {
+    private List<Stunde> setDay() {
 
-        List<Class> ClassList = new ArrayList<>();
+        List<Stunde> StundeList = new ArrayList<>();
 
-        ClassList.add(new Class("1"));
-        ClassList.add(new Class("2"));
-        ClassList.add(new Class("3"));
-        ClassList.add(new Class("4"));
-        ClassList.add(new Class("5"));
-        ClassList.add(new Class("6"));
-        ClassList.add(new Class("7"));
-        ClassList.add(new Class("8"));
-        ClassList.add(new Class("9"));
-        ClassList.add(new Class("10"));
-        ClassList.add(new Class("11"));
+        StundeList.add(new Stunde("1"));
+        StundeList.add(new Stunde("2"));
+        StundeList.add(new Stunde("3"));
+        StundeList.add(new Stunde("4"));
+        StundeList.add(new Stunde("5"));
+        StundeList.add(new Stunde("6"));
+        StundeList.add(new Stunde("7"));
+        StundeList.add(new Stunde("8"));
+        StundeList.add(new Stunde("9"));
+        StundeList.add(new Stunde("10"));
+        StundeList.add(new Stunde("11"));
 
-        return ClassList;
+        return StundeList;
     }
 
-    private int counter = 1;
+    private List<Stunde> setHours(String day) {
+
+        List<Stunde> HourList = new ArrayList<>();
+
+        Reader reader = new Reader();
+
+        for (int i = 1; i <= 11; i++) {
+            HourList.add(new Stunde(reader.getPlan("resources/plan.csv", "mo", i)));
+        }
+
+        return HourList;
+    }
 }
 

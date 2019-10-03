@@ -12,6 +12,8 @@ public class Main {
 
         System.out.println(reader.getOnlinePlan(Downloader.downloadPlan(Getter.get("day"))));
 
+        System.out.println(reader.getPlan("resources/plan.csv", "mo", 1));
+
     }
 
 

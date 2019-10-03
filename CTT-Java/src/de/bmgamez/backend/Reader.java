@@ -3,7 +3,9 @@ package de.bmgamez.backend;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.util.ArrayList;
 
 public class Reader {
@@ -51,14 +53,51 @@ public class Reader {
         return (string1);
     }
 
-    public String getPlan(String destination, String day, String hour) throws Exception {
+    public String getPlan(String destination, String day, int hour) {
 
         String thing = null;
+        ArrayList<String[]> arrayList = new ArrayList<String[]>();
 
-        BufferedReader fileReader = new BufferedReader(new FileReader(destination));
+        try {
 
-        System.out.println(fileReader.readLine());
+            BufferedReader fileReader = new BufferedReader(new FileReader(destination));
 
+            String line;
+
+            while ((line = fileReader.readLine()) != null) {
+                arrayList.add(line.split(";"));
+            }
+
+            String[] array = arrayList.get(hour);
+
+            int x;
+
+            switch (day) {
+                case "mo":
+                    x = 0;
+                    break;
+                case "di":
+                    x = 2;
+                    break;
+                case "mi":
+                    x = 4;
+                    break;
+                case "do":
+                    x = 6;
+                    break;
+                case "fr":
+                    x = 8;
+                    break;
+                default:
+                    return "";
+            }
+
+            thing = array[x];
+
+        } catch (Exception e) {
+            System.out.println(e);
+            return "false";
+        }
 
 
         return thing;
