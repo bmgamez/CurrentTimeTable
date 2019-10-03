@@ -1,4 +1,4 @@
-package de.bmgamez.main;
+package de.bmgamez.backend;
 
 import java.io.FileOutputStream;
 import java.io.InputStream;
@@ -6,7 +6,7 @@ import java.net.URL;
 
 public class Downloader {
 
-    static String downloadPlan(String day) {
+    public static String downloadPlan(String day) {
 
         String path = Getter.get("path");
 

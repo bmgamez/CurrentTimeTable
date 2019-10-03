@@ -1,4 +1,4 @@
-package de.bmgamez.main;
+package de.bmgamez.backend;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;

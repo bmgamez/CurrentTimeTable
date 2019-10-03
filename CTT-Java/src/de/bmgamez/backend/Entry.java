@@ -1,4 +1,4 @@
-package de.bmgamez.main;
+package de.bmgamez.backend;
 
 public class Entry {
     // Wenn keine 2. klasse vorhanden dann klassen[1] = null
@@ -69,7 +69,7 @@ public class Entry {
             currentIndex++;
         }
         if (verlegungsdatumVorhanden) {
-            currentEntry.verlegungsdaten = splitData[currentIndex] + splitData[currentIndex+1] + splitData[currentIndex+2];
+            currentEntry.verlegungsdaten = splitData[currentIndex] + splitData[currentIndex + 1] + splitData[currentIndex + 2];
             currentIndex = currentIndex + 3;
         }
         if (textVorhanden) {

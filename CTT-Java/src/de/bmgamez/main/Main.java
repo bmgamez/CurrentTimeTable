@@ -1,5 +1,7 @@
 package de.bmgamez.main;
 
+import de.bmgamez.backend.Downloader;
+import de.bmgamez.backend.Getter;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
 
