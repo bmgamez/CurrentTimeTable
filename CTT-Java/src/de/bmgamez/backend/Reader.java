@@ -3,12 +3,12 @@ package de.bmgamez.backend;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
 
-import java.io.File;
+import java.io.*;
 import java.util.ArrayList;
 
 public class Reader {
 
-    public String searchPlan(String destination) {
+    public String getOnlinePlan(String destination) {
 
         String string = null;
         String string1 = "";
@@ -49,5 +49,18 @@ public class Reader {
         }
 
         return (string1);
+    }
+
+    public String getPlan(String destination, String day, String hour) throws Exception {
+
+        String thing = null;
+
+        BufferedReader fileReader = new BufferedReader(new FileReader(destination));
+
+        System.out.println(fileReader.readLine());
+
+
+
+        return thing;
     }
 }
