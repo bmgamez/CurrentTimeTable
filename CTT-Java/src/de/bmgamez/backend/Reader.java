@@ -6,14 +6,14 @@ import org.apache.pdfbox.text.PDFTextStripper;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Reader {
 
-    public String getOnlinePlan(String destination) {
+    public String format(String destination) {
 
         String string = null;
-        String string1 = "";
 
         try {
 
@@ -23,6 +23,25 @@ public class Reader {
             PDFTextStripper pdfTextStripper = new PDFTextStripper();
 
             string = pdfTextStripper.getText(pdDocument);
+
+            pdDocument.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return string;
+    }
+
+    public String getOnlinePlan(String destination) {
+
+        String string = null;
+        String string1 = "";
+
+        try {
+
+            string = format(destination);
+
             String[] lines = string.split("\r\n|\r|\n");
 
             for (String line : lines) {

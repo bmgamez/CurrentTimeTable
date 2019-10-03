@@ -76,7 +76,7 @@ public class Entry {
             currentEntry.text = splitData[currentIndex];
             //currentIndex++;
         }
-        /*
+
         System.out.println(currentEntry.klassen[0]);
         System.out.println(currentEntry.klassen[1]);
         System.out.println(currentEntry.stunde);
@@ -86,7 +86,7 @@ public class Entry {
         System.out.println(currentEntry.neuerRaum);
         System.out.println(currentEntry.verlegungsdaten);
         System.out.println(currentEntry.text);
-        */
+
         return currentEntry;
     }
 }
