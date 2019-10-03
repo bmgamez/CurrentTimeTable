@@ -11,7 +11,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("CCT.fxml"));
-        primaryStage.setTitle("VeryAcuratePlan");
+        primaryStage.setTitle("Current Timetable");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
