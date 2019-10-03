@@ -63,7 +63,7 @@ public class Entry {
             currentEntry.fach = splitData[currentIndex];
             currentEntry.neuesFach = "---";
             currentIndex = currentIndex + 2;
-            Debug(currentEntry);
+            //Debug(currentEntry);
             return currentEntry;
         } else {
             currentEntry.fach = splitData[currentIndex];
@@ -88,7 +88,7 @@ public class Entry {
             //currentIndex++;
         }
 
-        Debug(currentEntry);
+        //Debug(currentEntry);
         return currentEntry;
     }
     static void Debug (Entry currentEntry)
