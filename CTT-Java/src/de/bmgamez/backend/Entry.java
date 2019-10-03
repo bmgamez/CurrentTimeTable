@@ -5,7 +5,7 @@ public class Entry {
     public String[] klassen = new String[2];
     public String stunde;
     public String fach;
-    // Wenn kein anderes Fach dann ist neuesFach = null
+    // Wenn kein anderes Fach dann ist neuesFach = fach
     public String neuesFach;
     public String raum;
     // Wenn kein neuer Raum dann ist neuerRaum = null
@@ -63,6 +63,8 @@ public class Entry {
             currentEntry.fach = splitData[currentIndex];
             currentEntry.neuesFach = "---";
             currentIndex = currentIndex + 2;
+            Debug(currentEntry);
+            return currentEntry;
         } else {
             currentEntry.fach = splitData[currentIndex];
             currentEntry.neuesFach = splitData[currentIndex];
@@ -86,6 +88,11 @@ public class Entry {
             //currentIndex++;
         }
 
+        Debug(currentEntry);
+        return currentEntry;
+    }
+    static void Debug (Entry currentEntry)
+    {
         System.out.println(currentEntry.klassen[0]);
         System.out.println(currentEntry.klassen[1]);
         System.out.println(currentEntry.stunde);
@@ -96,6 +103,5 @@ public class Entry {
         System.out.println(currentEntry.verlegungsdaten);
         System.out.println(currentEntry.text);
         System.out.println("---------------------------");
-        return currentEntry;
     }
 }
