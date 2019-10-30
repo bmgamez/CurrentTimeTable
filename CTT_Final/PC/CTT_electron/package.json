@@ -5,8 +5,8 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "pack-mac": "electron-packager . CurrentTimeTable --platform=darwin --overwrite --out=pack/",
-    "pack-win": "electron-packager . CurrentTimeTable --platform=win32 --arch=ia32,x64 --overwrite --out=pack/",
+    "pack-mac": "electron-packager . CurrentTimeTable --platform=darwin --icon=assets/icons/mac/icon.icns --overwrite --out=pack/",
+    "pack-win": "electron-packager . CurrentTimeTable --platform=win32 --arch=ia32,x64 --icon=assets/icons/win/icon.ico --overwrite --out=pack/",
     "build": "electron-builder build"
   },
   "keywords": [],
