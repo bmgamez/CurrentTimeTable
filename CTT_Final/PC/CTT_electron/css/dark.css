@@ -1,0 +1,20 @@
+body {
+    background-color: rgb(32, 32, 32);
+    color: white;
+}
+
+.top-container {
+    background-color: rgb(20, 20, 20);
+}
+
+.bottom-nav {
+    background-color: rgb(20, 20, 20);
+}
+
+.pre-bottom-nav {
+    background-color: rgb(20, 20, 20);
+}
+
+tr:nth-child(even) {
+    background-color: rgb(59, 59, 59);
+}
