@@ -126,7 +126,7 @@ dist
 # TernJS port file
 .tern-port
 
-#Build output
-.pack/
-.dist/
-.build/
+#Custom - Build output
+pack/
+dist/
+build/
