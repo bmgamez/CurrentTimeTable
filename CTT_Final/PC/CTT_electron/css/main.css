@@ -1,5 +1,6 @@
 body {
     font-family: Raleway;
+    transition: background-color, color 2s;
 }
 
 .top-container {
@@ -32,7 +33,7 @@ body {
     text-align: center;
     position: fixed;
     width: 100%;
-    bottom: 10%;
+    bottom: 70px;
     left: 0;
     height: 70px;
     line-height: 70px;

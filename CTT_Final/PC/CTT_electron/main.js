@@ -5,18 +5,16 @@ let win
 function createWindow() {
 
     win = new BrowserWindow({
-        width: 800,
-        height: 600,
+        width: 600,
+        height: 800,
+        minWidth: 400,
+        minHeight: 800,
         webPreferences: {
             nodeIntegration: true
         }
     })
 
     win.loadFile('index.html')
-
-
-    win.webContents.openDevTools()
-
 
     win.on('closed', () => {
         win = null
