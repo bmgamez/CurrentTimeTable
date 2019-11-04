@@ -21,6 +21,7 @@
   "build": {
     "mac": {
       "category": "public.app-category.developer-tools",
+      "icon": "assets/icons/mac/icon.icns",
       "target": "dmg"
     }
   }
