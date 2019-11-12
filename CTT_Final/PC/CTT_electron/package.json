@@ -11,8 +11,8 @@
     "build": "electron-builder build"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Benedict Weis",
+  "license": "MIT",
   "devDependencies": {
     "electron": "^7.0.0",
     "electron-builder": "^21.2.0",
@@ -24,5 +24,10 @@
       "icon": "assets/icons/mac/icon.icns",
       "target": "dmg"
     }
+  },
+  "dependencies": {
+    "pdf-parse": "^1.1.1",
+    "pdfreader": "^1.0.6",
+    "request": "^2.88.0"
   }
 }
