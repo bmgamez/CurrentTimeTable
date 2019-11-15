@@ -1,21 +1,8 @@
-var fs = require('fs')
-var request = require('request')
 
-
-request({
-    uri: 'http://africau.edu/images/default/sample.pdf',
-    headers: {
-        'Content-type': 'application/pdf'
-    }
-}, function (error, response, body) {
-    if (!error && response.statusCode == 200) {
-        fs.writeFileSync("10111.pdf", body, 'binary');
-    }
-})
 
 const pdf = require('pdf-parse');
  
-let dataBuffer = fs.readFileSync('10111.pdf');
+let dataBuffer = fs.readFileSync('data/plan.pdf');
  
 pdf(dataBuffer).then(function(data) {
  
@@ -33,4 +20,4 @@ pdf(dataBuffer).then(function(data) {
     // PDF text
     console.log(data.text); 
         
-})
+});

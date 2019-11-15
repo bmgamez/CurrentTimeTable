@@ -11,9 +11,10 @@ public class Downloader {
         String path = Getter.get("path");
 
         try {
-            URL url = new URL("http://schulinternes.de/dato40/hp-show.php?schule=" + Getter.get("school") + "&tag=" + day);
+            URL url = new URL("https://schulinternes.de/dato40/server/hp-show.php?data=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzY2h1bGUiOiI2ODc2NmNmZyIsImV4cCI6MTU3MzgzOTQ5MSwidGFnIjoibW8ifQ.kzn60OPDnq4TCxRZ1n_IEToghvZVZObGg69ZJTSonrQ");
             InputStream in = url.openStream();
             FileOutputStream fos = new FileOutputStream(path);
+            System.out.println("Now Downloading");
 
             int length = -1;
             byte[] buffer = new byte[1024];
