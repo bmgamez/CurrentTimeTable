@@ -1,4 +1,7 @@
-const {app,BrowserWindow} = require('electron')
+const {
+    app,
+    BrowserWindow
+} = require('electron')
 const ipcMain = require('electron').ipcMain
 
 let win
@@ -14,7 +17,8 @@ function createWindow() {
         minHeight: 800,
         webPreferences: {
             nodeIntegration: true
-        }
+        },
+        autoHideMenuBar: true
     })
 
     win.loadFile('views/index.html')
@@ -33,7 +37,8 @@ function createWindowStats() {
         minHeight: 400,
         webPreferences: {
             nodeIntegration: true
-        }
+        },
+        autoHideMenuBar: true
     })
 
     winStats.loadFile('views/stats.html')
@@ -52,7 +57,8 @@ function createWindowSetings() {
         minHeight: 400,
         webPreferences: {
             nodeIntegration: true
-        }
+        },
+        autoHideMenuBar: true
     })
 
     winSettings.loadFile('views/settings.html')
@@ -80,6 +86,7 @@ app.on('activate', () => {
 
 ipcMain.on('open:window:plan', (event, args) => {
     console.log("opening Plan")
+    loadPlan(event)
 })
 
 ipcMain.on('open:window:stats', (event, args) => {
@@ -91,3 +98,27 @@ ipcMain.on('open:window:settings', (event, args) => {
     console.log("opening Settings")
     createWindowSetings()
 })
+
+function loadPlan(event) {
+
+    var exec = require('child_process').exec;
+    exec('java -jar CTT-Java.jar', function callback(error, stdout, stderr) {
+        var output = stdout
+        var finalString = "<tr><th>Hour</th><th>Subject</th></tr>"
+        //console.log(output)
+        var subjects = stdout.split("\r\n")
+        //console.log(subjects)
+        var i = 1;
+        for (var subject in subjects) {
+            if (subjects[i-1] == " " || subjects[i-1] == "") {
+                break;
+            }
+            var String = "<tr><th>" + i + "</th> <th>" + subjects[i-1] +"</th> </tr>"
+            finalString += String;
+            i++
+        }
+        console.log(finalString)
+        event.sender.send("fromMain",finalString)
+        return finalString;
+    });
+}

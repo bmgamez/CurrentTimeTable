@@ -20,7 +20,7 @@ public class Main {
 
         String string = reader.getOnlinePlan(Downloader1.downloadPlan(Integer.parseInt(Getter.get("day"))));
 
-        for (int i = 1; i <= 9; i++) {
+        for (int i = 1; i <= 11; i++) {
             try {
                 if (sorter.getLesson(reader.getOnlinePlan(Getter.get("path")), Getter.get("dayText"), i)[0] == null) {
                     System.out.println(reader.getPlan("resources/plan.CSV", Getter.get("dayText"), i));

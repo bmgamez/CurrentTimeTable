@@ -5,6 +5,7 @@
     var openPlanBtn = document.getElementById('openPlan')
     var openStatsBtn = document.getElementById('openStats')
     var openSettingsBtn = document.getElementById('openSettings')
+    var table = document.getElementById('main-table')
 
     loadTodayBtn.addEventListener('click', () => {
         console.log("loading Today")
@@ -16,6 +17,7 @@
 
     openPlanBtn.addEventListener('click', () => {
         console.log("opening Plan")
+        table.innerHTML = ""
         ipcRenderer.send('open:window:plan')
     });
 
@@ -28,3 +30,11 @@
         console.log("opening Settings")
         ipcRenderer.send('open:window:settings')
     });
+
+    ipcRenderer.on('fromMain', (event, messages) => {
+        console.log(messages);
+        table.innerHTML = messages
+    });
+
+    table.innerHTML = ""
+    ipcRenderer.send('open:window:plan')

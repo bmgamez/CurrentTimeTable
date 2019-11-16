@@ -20,7 +20,6 @@ public class Downloader1 {
         String encoding = con.getContentEncoding();
         encoding = encoding == null ? "UTF-8" : encoding;
         String body = IOUtils.toString(in, encoding);
-        System.out.println(body);
 
         URL url1 = new URL("https://schulinternes.de/dato40/server/hp-vertretungen-s.php?data=" + body);
         URLConnection con1 = url1.openConnection();
@@ -34,8 +33,6 @@ public class Downloader1 {
         Elements links = doc.select("a[href]");
 
         String finalURL = links.get(day).attr("abs:href");
-        System.out.println(finalURL);
-
 
         String path = Getter.get("path");
 

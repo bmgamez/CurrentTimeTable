@@ -68,3 +68,9 @@ td, th {
     text-align: left;
     padding: 8px;
 }
+
+.loading {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+}
