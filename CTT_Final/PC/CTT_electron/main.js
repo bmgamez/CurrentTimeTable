@@ -106,7 +106,11 @@ function loadPlan(event) {
         var output = stdout
         var finalString = "<tr><th>Hour</th><th>Subject</th></tr>"
         //console.log(output)
-        var subjects = stdout.split("\r\n")
+        if(process.platform == "darwin") {
+            var subjects = stdout.split("\n")   
+        } else {
+            var subjects = stdout.split("\r\n")
+        }
         //console.log(subjects)
         var i = 1;
         for (var subject in subjects) {
