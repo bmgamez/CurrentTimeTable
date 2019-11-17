@@ -18,7 +18,7 @@ public class Main {
 
         //System.out.println(sorter.getLesson(reader.getOnlinePlan(Getter.get("path")), Getter.get("day"), 5));
 
-        String string = reader.getOnlinePlan(Downloader1.downloadPlan(Integer.parseInt(Getter.get("day"))));
+        String string = reader.getOnlinePlan(Downloader.downloadPlan(Integer.parseInt(Getter.get("day"))));
 
         for (int i = 1; i <= 11; i++) {
             try {
