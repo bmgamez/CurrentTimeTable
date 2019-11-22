@@ -13,6 +13,21 @@ public class Sorter {
         String[] lines = data.split("\r\n|\r|\n");
 
         for (String line : lines) {
+            line = line.replace("D", "Deutsch");
+            line = line.replace("Ph", "Physik");
+            line = line.replace("Ch", "Chemie");
+            line = line.replace("Aufs", "Aufsicht");
+            line = line.replace("M", "Mathematik");
+            line = line.replace("B", "Biologie");
+            line = line.replace("E", "Englisch");
+            line = line.replace("G", "Geschichte");
+            line = line.replace("Geo", "Geographie");
+            line = line.replace("SpM", "Sport");
+            line = line.replace("SpW", "Sport");
+            line = line.replace("Mus", "Musik");
+            line = line.replace("F", "Französich");
+            line = line.replace("GK", "Gemeinschaftskunde");
+            line = line.replace("BK", "Bildende Kunst");
             line = line.replace(". / ", "./");
             line = line.replace(", ", ";");
             line = line.replace(" - ", "-");

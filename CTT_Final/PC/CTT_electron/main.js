@@ -102,12 +102,13 @@ ipcMain.on('open:window:settings', (event, args) => {
 function loadPlan(event) {
 
     var exec = require('child_process').exec;
+
     exec('java -jar CTT-Java.jar', function callback(error, stdout, stderr) {
         var output = stdout
-        var finalString = "<tr><th>Hour</th><th>Subject</th></tr>"
-        //console.log(output)
-        if(process.platform == "darwin") {
-            var subjects = stdout.split("\n")   
+        var finalString = "<tr><th>Stunde</th><th>Fach</th></tr>"
+        console.log(output)
+        if (process.platform == "darwin") {
+            var subjects = stdout.split("\n")
         } else {
             var subjects = stdout.split("\r\n")
         }
@@ -117,12 +118,12 @@ function loadPlan(event) {
             //if (subjects[i-1] == " " || subjects[i-1] == "") {
             //    break;
             //}
-            var String = "<tr><th>" + i + "</th> <th>" + subjects[i-1] +"</th> </tr>"
+            var String = "<tr><th>" + i + "</th> <th>" + subjects[i - 1] + "</th> </tr>"
             finalString += String;
             i++
         }
         console.log(finalString)
-        event.sender.send("fromMain",finalString)
+        event.sender.send("fromMain", finalString)
         return finalString;
     });
 }

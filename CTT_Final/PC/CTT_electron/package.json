@@ -24,5 +24,9 @@
       "icon": "assets/icons/mac/icon.icns",
       "target": "dmg"
     }
+  },
+  "dependencies": {
+    "encoding": "^0.1.12",
+    "utf-8": "^2.0.0"
   }
 }
