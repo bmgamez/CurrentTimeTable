@@ -1,22 +1,16 @@
 package de.bmgamez.main;
 
-import de.bmgamez.backend.*;
+import de.bmgamez.backend.Downloader;
+import de.bmgamez.backend.Getter;
+import de.bmgamez.backend.Reader;
+import de.bmgamez.backend.Sorter;
 
 public class Main {
 
     public static void main(String[] args) throws Exception {
-        Entry[] entryArray = new Entry[11];
 
         Reader reader = new Reader();
         Sorter sorter = new Sorter();
-
-
-        //Entry entry = Entry.CreateEntry("10c 2 M→G 404 Mi-2.10. / 9");
-        //System.out.println(entry.neuesFach);
-
-        //System.out.println(reader.getOnlinePlan(Downloader.downloadPlan(Getter.get("day"))));
-
-        //System.out.println(sorter.getLesson(reader.getOnlinePlan(Getter.get("path")), Getter.get("day"), 5));
 
         String string = reader.getOnlinePlan(Downloader.downloadPlan(Integer.parseInt(Getter.get("day"))));
 
@@ -43,7 +37,7 @@ public class Main {
         //        entryArray[Integer.parseInt(temp.stunde) - 1] = temp;
         //    }
         //}
-//
+        //
         //for (int i = 1; i <= 9; i++) {
         //    try {
         //        if (entryArray[i - 1].neuesFach == null) {
