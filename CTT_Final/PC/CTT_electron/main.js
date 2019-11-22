@@ -114,9 +114,9 @@ function loadPlan(event) {
         //console.log(subjects)
         var i = 1;
         for (var subject in subjects) {
-            if (subjects[i-1] == " " || subjects[i-1] == "") {
-                break;
-            }
+            //if (subjects[i-1] == " " || subjects[i-1] == "") {
+            //    break;
+            //}
             var String = "<tr><th>" + i + "</th> <th>" + subjects[i-1] +"</th> </tr>"
             finalString += String;
             i++
