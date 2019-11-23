@@ -103,7 +103,11 @@ function loadPlan(event) {
 
     var exec = require('child_process').exec;
 
-    exec('java -jar CTT-Java.jar', function callback(error, stdout, stderr) {
+    var dirname = __dirname.replace(/\\/g, '/')
+    var call = "cd " + dirname + " &&" + " java -jar CTT-Java.jar"
+    console.log(call)
+
+    exec(call, function callback(error, stdout, stderr) {
         var output = stdout
         var finalString = "<tr><th>Stunde</th><th>Fach</th></tr>"
         console.log(output)
