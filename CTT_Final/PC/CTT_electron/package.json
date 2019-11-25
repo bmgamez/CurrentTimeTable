@@ -1,30 +1,52 @@
 {
   "name": "currenttimetable",
   "version": "1.0.0",
-  "description": "",
+  "description": "Check the Time Table",
   "main": "main.js",
+  "keywords": [],
+  "author": "Benedict Weis",
+  "license": "MIT",
   "scripts": {
     "start": "electron .",
     "pack:mac": "electron-packager . CurrentTimeTable --platform=darwin --icon=assets/icons/mac/icon.icns --overwrite --out=pack/",
     "pack:linux": "electron-packager . CurrentTimeTable --platform=linux --icon=assets/icons/png/icon.png --overwrite --out=pack/",
     "pack:win": "electron-packager . CurrentTimeTable --platform=win32 --arch=ia32,x64 --icon=assets/icons/win/icon.ico --overwrite --out=pack/",
-    "build:mac": "electron-builder build --pd=pack/CurrentTimeTable-darwin-x64",
-    "build:linux": "electron-builder build --pd=pack/CurrentTimeTable-linux-x64",
-    "build:win": "electron-builder build --pd=pack/CurrentTimeTable-win32-x64",
-    "build:win32": "electron-builder build --pd=pack/CurrentTimeTable-win32-ia32"
+    "build:mac": "electron-builder build --macos --pd=pack/CurrentTimeTable-darwin-x64",
+    "build:linux": "electron-builder build --linux --pd=pack/CurrentTimeTable-linux-x64",
+    "build:win": "electron-builder build --win -x64 --pd=pack/CurrentTimeTable-win32-x64",
+    "build:win32": "electron-builder build --win --ia32 --pd=pack/CurrentTimeTable-win32-ia32"
   },
-  "keywords": [],
-  "author": "Benedict Weis",
-  "license": "MIT",
   "devDependencies": {
     "electron": "^7.0.0",
     "electron-builder": "^21.2.0",
     "electron-packager": "^14.1.0"
   },
   "build": {
+    "appId": "de.bmgez.ctt",
+    "productName": "CurrentTimeTable",
     "win": {
       "icon": "assets/icons/win/icon.ico",
-      "target": ["nsis","portable"]
+      "target": [
+        "nsis",
+        "portable",
+        "zip"
+      ]
+    },
+    "mac": {
+      "icon": "assets/icons/mac/icon.icns",
+      "target": [
+        "dmg",
+        "zip"
+      ]
+    },
+    "linux" : {
+      "icon": "assets/icons/png/icon.png",
+      "target": [
+        "AppImage",
+        "snap",
+        "deb",
+        "zip"
+      ]
     }
   }
 }
