@@ -107,27 +107,34 @@ function loadPlan(event) {
     var call = "cd " + dirname + " &&" + " java -jar CTT-Java.jar"
     console.log(call)
 
-    exec(call, function callback(error, stdout, stderr) {
-        var output = stdout
-        var finalString = "<tr><th>Stunde</th><th>Fach</th></tr>"
-        console.log(output)
-        if (process.platform == "darwin") {
-            var subjects = stdout.split("\n")
-        } else {
-            var subjects = stdout.split("\r\n")
-        }
-        //console.log(subjects)
+    var subjects = [];
+    var finalString = "<tr><th>Stunde</th><th>Fach</th></tr>"
+
+    const spawn = require('child_process').spawn;
+    const ls = spawn('java', ['-jar', dirname + '/CTT-Java.jar']);
+
+    ls.stdout.on('data', (data) => {
+        subjects.push(data)
+        console.log(`stdout: ${data}`);
+    });
+
+    ls.stderr.on('data', (data) => {
+        console.error(`stderr: ${data}`);
+    });
+
+    ls.on('close', (code) => {
+        console.log(`child process exited with code ${code}`);
         var i = 1;
         for (var subject in subjects) {
-            //if (subjects[i-1] == " " || subjects[i-1] == "") {
-            //    break;
-            //}
             var String = "<tr><th>" + i + "</th> <th>" + subjects[i - 1] + "</th> </tr>"
             finalString += String;
             i++
         }
+
         console.log(finalString)
         event.sender.send("fromMain", finalString)
         return finalString;
     });
+
+
 }
