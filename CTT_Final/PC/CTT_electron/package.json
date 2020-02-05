@@ -39,7 +39,7 @@
         "zip"
       ]
     },
-    "linux" : {
+    "linux": {
       "icon": "assets/icons/png/icon.png",
       "target": [
         "AppImage",
@@ -48,5 +48,10 @@
         "zip"
       ]
     }
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "node-datetime": "^2.1.2",
+    "request": "^2.88.0"
   }
 }
