@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class Reader {
 
-    public String format(String destination) {
+    public String readPlan(String destination) {
 
         String string = null;
 
@@ -40,7 +40,7 @@ public class Reader {
 
         try {
 
-            string = format(destination);
+            string = readPlan(destination);
 
             String[] lines = string.split("\r\n|\r|\n");
 

@@ -1,9 +1,9 @@
 package de.bmgamez.main;
 
-import de.bmgamez.backend.Downloader;
-import de.bmgamez.backend.Getter;
 import de.bmgamez.backend.Reader;
 import de.bmgamez.backend.Sorter;
+
+import java.util.Arrays;
 
 public class Main {
 
@@ -12,19 +12,22 @@ public class Main {
         Reader reader = new Reader();
         Sorter sorter = new Sorter();
 
-        String string = reader.getOnlinePlan(Downloader.downloadPlan(Integer.parseInt(Getter.get("day"))));
 
-        for (int i = 1; i <= 11; i++) {
-            try {
-                if (sorter.getLesson(reader.getOnlinePlan(Getter.get("path")), Getter.get("dayText"), i)[0] == null) {
-                    System.out.println(reader.getPlan("resources/plan.CSV", Getter.get("dayText"), i));
-                } else {
-                    System.out.println(sorter.getLesson(reader.getOnlinePlan(Getter.get("path")), Getter.get("dayText"), i)[1]);
-                }
-            } catch (Exception e) {
-                System.out.println(reader.getPlan("resources/plan.CSV", Getter.get("dayText"), i));
-            }
-        }
+        String[] string = reader.readPlan("resources/tmp/plan.pdf").split("\r\n|\r|\n");
+        System.out.println(Arrays.toString(string));
+
+        //String string = reader.getOnlinePlan(Downloader.downloadPlan(Integer.parseInt(Getter.get("day"))));
+        //for (int i = 1; i <= 11; i++) {
+        //    try {
+        //        if (sorter.getLesson(reader.getOnlinePlan(Getter.get("path")), Getter.get("dayText"), i)[0] == null) {
+        //            System.out.println(reader.getPlan("resources/plan.CSV", Getter.get("dayText"), i));
+        //        } else {
+        //            System.out.println(sorter.getLesson(reader.getOnlinePlan(Getter.get("path")), Getter.get("dayText"), i)[1]);
+        //        }
+        //    } catch (Exception e) {
+        //        System.out.println(reader.getPlan("resources/plan.CSV", Getter.get("dayText"), i));
+        //    }
+        //}
 
         //String[] string = reader.getOnlinePlan(Downloader1.downloadPlan(Integer.parseInt(Getter.get("day")))).split("\r\n|\r|\n");
         //for (String data : string) {

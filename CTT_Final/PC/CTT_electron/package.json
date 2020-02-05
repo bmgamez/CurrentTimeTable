@@ -5,21 +5,25 @@
   "main": "main.js",
   "keywords": [],
   "author": "Benedict Weis",
+  "repository": {
+    "url": "https://github.com/bmgamez/CurrentTimeTable"
+  },
   "license": "MIT",
   "scripts": {
     "start": "electron .",
     "pack:mac": "electron-packager . CurrentTimeTable --platform=darwin --icon=assets/icons/mac/icon.icns --overwrite --out=pack/",
     "pack:linux": "electron-packager . CurrentTimeTable --platform=linux --icon=assets/icons/png/icon.png --overwrite --out=pack/",
     "pack:win": "electron-packager . CurrentTimeTable --platform=win32 --arch=ia32,x64 --icon=assets/icons/win/icon.ico --overwrite --out=pack/",
+    "pack": "npm run pack:mac && npm run pack:linux && npm run pack:win",
     "build:mac": "electron-builder build --macos --pd=pack/CurrentTimeTable-darwin-x64",
     "build:linux": "electron-builder build --linux --pd=pack/CurrentTimeTable-linux-x64",
-    "build:win": "electron-builder build --win -x64 --pd=pack/CurrentTimeTable-win32-x64",
+    "build:win": "electron-builder build --win --x64 --pd=pack/CurrentTimeTable-win32-x64",
     "build:win32": "electron-builder build --win --ia32 --pd=pack/CurrentTimeTable-win32-ia32"
   },
   "devDependencies": {
-    "electron": "^7.0.0",
+    "electron": "^7.1.2",
     "electron-builder": "^21.2.0",
-    "electron-packager": "^14.1.0"
+    "electron-packager": "^14.1.1"
   },
   "build": {
     "appId": "de.bmgez.ctt",
@@ -47,6 +51,9 @@
         "deb",
         "zip"
       ]
+    },
+    "nsis": {
+      "oneClick": "false"
     }
   },
   "dependencies": {
