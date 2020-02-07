@@ -1,9 +1,13 @@
 package de.bmgamez.main;
 
+import de.bmgamez.backend.Downloader;
+import de.bmgamez.backend.Getter;
 import de.bmgamez.backend.Reader;
 import de.bmgamez.backend.Sorter;
 
-import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.TimeZone;
 
 public class Main {
 
@@ -11,10 +15,31 @@ public class Main {
 
         Reader reader = new Reader();
         Sorter sorter = new Sorter();
+        Downloader downloader = new Downloader();
 
+        downloader.downloadPlans();
 
-        String[] string = reader.readPlan("resources/tmp/plan.pdf").split("\r\n|\r|\n");
-        System.out.println(Arrays.toString(string));
+        Calendar calendar = Calendar.getInstance(TimeZone.getDefault());
+        Date date = calendar.getTime();
+
+        int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
+
+        for (int i = 0; i < 2; i++) {
+
+            String input = reader.getOnlinePlan(Getter.get("path") + "/plan" + i + ".pdf");
+
+            for (int j = 1; j <= 11; j++)
+                if (sorter.getLesson(input, j)[1] != null) {
+
+                    System.out.println(sorter.getLesson(input, j)[1]);
+                } else {
+
+                    System.out.println(reader.getPlan("resources/plan.CSV", dayOfWeek, j));
+                }
+        }
+
+        //String[] string = reader.readPlan("resources/tmp/plan.pdf").split("\r\n|\r|\n");
+        //System.out.println(Arrays.toString(string));
 
         //String string = reader.getOnlinePlan(Downloader.downloadPlan(Integer.parseInt(Getter.get("day"))));
         //for (int i = 1; i <= 11; i++) {

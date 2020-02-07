@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Sorter {
 
-    public String[] getLesson(String data, String day, int hour) {
+    public String[] getLesson(String data, int hour) {
 
         String[] thing = new String[5];
 
@@ -13,6 +13,7 @@ public class Sorter {
         String[] lines = data.split("\r\n|\r|\n");
 
         for (String line : lines) {
+
             line = line.replace("D", "Deutsch");
             line = line.replace("Ph", "Physik");
             line = line.replace("Ch", "Chemie");
@@ -20,7 +21,7 @@ public class Sorter {
             line = line.replace("M", "Mathematik");
             line = line.replace("B", "Biologie");
             line = line.replace("E", "Englisch");
-            line = line.replace("G", "Geschichte");
+            line = line.replace("G ", "Geschichte");
             line = line.replace("Geo", "Geographie");
             line = line.replace("SpM", "Sport");
             line = line.replace("SpW", "Sport");

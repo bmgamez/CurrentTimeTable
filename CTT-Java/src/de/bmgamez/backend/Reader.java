@@ -11,6 +11,55 @@ import java.util.ArrayList;
 
 public class Reader {
 
+    public String getOnlinePlan(String destination) {
+
+        String output = "";
+
+        try {
+
+            String plan = readPlan(destination);
+
+            String[] lines = plan.split("\r\n|\r|\n");
+
+            for (String line : lines) {
+
+                if (Getter.getArray("courses").toArray().length == 0) {
+
+                    if (line.contains(Getter.get("class"))) {
+
+                        output = output + line + "\n";
+                    }
+                } else {
+
+                    if (line.contains(Getter.get("class"))) {
+
+                        output += line;
+
+                    } else {
+
+                        ArrayList<String> courses = Getter.getArray("courses");
+
+                        for (String course : courses) {
+
+                            if (line.contains(course)) {
+
+                                output += line;
+                            }
+                        }
+                    }
+                }
+            }
+
+            //Remove unnecessary two chars at the end
+            output = output.substring(0, output.length() - 2);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return output;
+    }
+
     public String readPlan(String destination) {
 
         String string = null;
@@ -33,46 +82,7 @@ public class Reader {
         return string;
     }
 
-    public String getOnlinePlan(String destination) {
-
-        String string = null;
-        String string1 = "";
-
-        try {
-
-            string = readPlan(destination);
-
-            String[] lines = string.split("\r\n|\r|\n");
-
-            for (String line : lines) {
-                if (Getter.getArray("courses").toArray().length == 0) {
-                    if (line.contains(Getter.get("class"))) {
-                        string1 = string1 + line + "\n";
-                    }
-                } else {
-                    if (line.contains(Getter.get("class"))) {
-
-                        ArrayList<String> arrayList = Getter.getArray("courses");
-                        String[] courses = new String[arrayList.size()];
-                        courses = arrayList.toArray(courses);
-
-                        for (String course : courses) {
-                            if (line.contains(course)) {
-                                string1 = string1 + line + "\n";
-                            }
-                        }
-                    }
-                }
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return (string1);
-    }
-
-    public String getPlan(String destination, String day, int hour) {
+    public String getPlan(String destination, int day, int hour) {
 
         String thing = null;
         ArrayList<String[]> arrayList = new ArrayList<String[]>();
@@ -89,26 +99,12 @@ public class Reader {
 
             String[] array = arrayList.get(hour);
 
-            int x;
+            int x = 0;
 
-            switch (day) {
-                case "mo":
-                    x = 0;
-                    break;
-                case "di":
-                    x = 2;
-                    break;
-                case "mi":
-                    x = 4;
-                    break;
-                case "do":
-                    x = 6;
-                    break;
-                case "fr":
-                    x = 8;
-                    break;
-                default:
-                    return "";
+            if ((day % 2) == 1) {
+                x = day + 2 - 1;
+            } else if ((day % 2) == 0) {
+                x = day + 2;
             }
 
             thing = array[x];
@@ -117,7 +113,6 @@ public class Reader {
             System.out.println(e);
             return "false";
         }
-
 
         return thing;
     }
