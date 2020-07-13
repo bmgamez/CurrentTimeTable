@@ -10,9 +10,11 @@ public class Sorter {
 
         ArrayList<String> array = new ArrayList<String>();
 
-        String[] lines = data.split("\r\n|\r|\n");
+        String[] lines = data.split(" /end ");
 
         for (String line : lines) {
+
+            System.out.println(line);
 
             line = line.replace("D", "Deutsch");
             line = line.replace("Ph", "Physik");

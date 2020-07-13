@@ -8,6 +8,9 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.TimeZone;
 
 public class Reader {
 
@@ -23,19 +26,9 @@ public class Reader {
 
             for (String line : lines) {
 
-                if (Getter.getArray("courses").toArray().length == 0) {
+                if (line.contains(Getter.get("class"))) {
 
-                    if (line.contains(Getter.get("class"))) {
-
-                        output = output + line + "\n";
-                    }
-                } else {
-
-                    if (line.contains(Getter.get("class"))) {
-
-                        output += line;
-
-                    } else {
+                    if (Getter.get("class") == "11" || Getter.get("class") == "12") {
 
                         ArrayList<String> courses = Getter.getArray("courses");
 
@@ -43,19 +36,26 @@ public class Reader {
 
                             if (line.contains(course)) {
 
-                                output += line;
+                                output += line + " /end ";
                             }
                         }
+                    } else {
+                        output += line + " /end ";
                     }
                 }
             }
 
-            //Remove unnecessary two chars at the end
-            output = output.substring(0, output.length() - 2);
+            if (output != "") {
+                //Remove unnecessary two chars at the end
+                output = output.substring(0, output.length() - 2);
+            }
+
 
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        System.out.println(output);
 
         return output;
     }
@@ -99,12 +99,34 @@ public class Reader {
 
             String[] array = arrayList.get(hour);
 
+            Calendar calendar = Calendar.getInstance(TimeZone.getDefault());
+            Date date = calendar.getTime();
+
+            int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
+
             int x = 0;
 
-            if ((day % 2) == 1) {
-                x = day + 2 - 1;
-            } else if ((day % 2) == 0) {
-                x = day + 2;
+            if (dayOfWeek >= 6 || dayOfWeek <= 1) {
+                if (day == 1) {
+                    x = 0;
+                } else if (day == 0) {
+                    x = 8;
+                }
+            } else {
+                switch (dayOfWeek) {
+                    case 2:
+                        x = 0 + (day * 2);
+                        break;
+                    case 3:
+                        x = 2 + (day * 2);
+                        break;
+                    case 4:
+                        x = 4 + (day * 2);
+                        break;
+                    case 5:
+                        x = 6 + (day * 2);
+                        break;
+                }
             }
 
             thing = array[x];

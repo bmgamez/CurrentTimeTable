@@ -47,7 +47,7 @@ public class Downloader {
                 int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
                 int planInt = 0;
 
-                if (dayOfWeek == 6) {
+                if (dayOfWeek >= 6 || dayOfWeek <= 1) {
                     planInt = 1 - i;
                 } else {
                     planInt = i;
