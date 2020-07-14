@@ -21,14 +21,14 @@ dependencies {
 
 jar {
     manifest {
-        attributes 'Main-Class': 'de.bmgamez.CurrentTimeTable.main.Main'
+        attributes 'Main-Class': 'de.bmgamez.currenttimetable.main.Main'
     }
 }
 
 task fatJar(type: Jar) {
     manifest {
         attributes 'Implementation-Title': 'Gradle Jar File Example',
-                'Main-Class': 'de.bmgamez.CurrentTimeTable.main.Main'
+                'Main-Class': 'de.bmgamez.currenttimetable.main.Main'
     }
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
     with jar
